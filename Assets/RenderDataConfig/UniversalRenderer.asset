@@ -69,5 +69,5 @@ MonoBehaviour:
   m_Active: 1
   settings:
     PassEvent: 600
-    blurType: 5
-    filterMode: 0
+    blurType: 3
+    filterMode: 1
