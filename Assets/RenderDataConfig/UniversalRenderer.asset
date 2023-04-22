@@ -16,7 +16,8 @@ MonoBehaviour:
     debugReplacementPS: {fileID: 4800000, guid: cf852408f2e174538bcd9b7fda1c5ae7, type: 3}
   m_RendererFeatures:
   - {fileID: 8198383772697070090}
-  m_RendererFeatureMap: 0a8aefb79a82c671
+  - {fileID: 7693856242790096819}
+  m_RendererFeatureMap: 0a8aefb79a82c671b3df6c307d11c66a
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
@@ -54,6 +55,24 @@ MonoBehaviour:
   m_ClusteredRendering: 0
   m_TileSize: 32
   m_IntermediateTextureMode: 1
+--- !u!114 &7693856242790096819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8176be35009d6b343b59c44ecbe5eced, type: 3}
+  m_Name: RGBSplitGlitchRenderFeature
+  m_EditorClassIdentifier: 
+  m_Active: 0
+  settings:
+    intensity: 0
+    configSettings:
+      PassEvent: 600
+      filterMode: 0
 --- !u!114 &8198383772697070090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,5 +88,5 @@ MonoBehaviour:
   m_Active: 1
   settings:
     PassEvent: 600
-    blurType: 3
+    blurType: 4
     filterMode: 1
