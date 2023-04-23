@@ -1,5 +1,28 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9089635758343683507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ece6f4cf0cc814b4290c38bcf2d56886, type: 3}
+  m_Name: BlackWhiteFlash
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  settings:
+    material: {fileID: 2100000, guid: 6f58bf042ca3b2749b8ee02bd26bb410, type: 2}
+    intensity: 1
+    noiseIntensity: 0.631
+    center: {x: 0.5, y: 0.5}
+    radialTilling: 0
+    lengthTilling: 21.5
+    configSettings:
+      PassEvent: 550
+      filterMode: 1
 --- !u!114 &-8611861291734027720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33,7 +56,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10c75907a29355945a32f7bc2b98baaf, type: 3}
   m_Name: LineBlockGlitch
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   settings:
     speed: 0.61
     mulit: 1.26
@@ -86,7 +109,8 @@ MonoBehaviour:
   - {fileID: 5624081886403018229}
   - {fileID: -8083662789853775871}
   - {fileID: -8611861291734027720}
-  m_RendererFeatureMap: 0a8aefb79a82c671b3df6c307d11c66ac73b43fccf54f6bef5bdc292adc00c4e01f8b88e850fd18f38b24163c8857c88
+  - {fileID: -9089635758343683507}
+  m_RendererFeatureMap: 0a8aefb79a82c671b3df6c307d11c66ac73b43fccf54f6bef5bdc292adc00c4e01f8b88e850fd18f38b24163c8857c884d823cce6f20db81
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
@@ -184,8 +208,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a507abcb9ee3fb24ba38b27abca8717c, type: 3}
   m_Name: BlurRenderFeature
   m_EditorClassIdentifier: 
-  m_Active: 0
+  m_Active: 1
   settings:
     PassEvent: 600
-    blurType: 0
+    blurType: 3
     filterMode: 1

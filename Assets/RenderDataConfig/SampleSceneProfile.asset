@@ -120,10 +120,10 @@ MonoBehaviour:
     m_Value: 1
   BlurRadius:
     m_OverrideState: 1
-    m_Value: 2.7
+    m_Value: 1.9
   Iteration:
     m_OverrideState: 1
-    m_Value: 6
+    m_Value: 2
   DownSampler:
     m_OverrideState: 1
     m_Value: 1
