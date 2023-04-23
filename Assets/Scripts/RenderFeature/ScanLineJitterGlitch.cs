@@ -3,9 +3,8 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-public class RGBSplitGlitchRenderFeature : ScriptableRendererFeature
+public class ScanLineJitterGlitch : ScriptableRendererFeature
 {
-
     [Serializable]
     public class Settings
     {
@@ -13,12 +12,14 @@ public class RGBSplitGlitchRenderFeature : ScriptableRendererFeature
         public float intensity;
         [Range(0f, 3f)]
         public float speed;
-        [Range(0f, 10f)]
+        [Range(0f, 2f)]
+        public float threshold;
+        [Range(0f, 1f)]
         public float mulit;
+
         public ConfigSettings configSettings;
     }
 
-    //static int colorBuffer_id = Shader.PropertyToID("_ColorBuffer");
     static int param_id = Shader.PropertyToID("_GlitchParams");
 
     [Serializable]
@@ -29,50 +30,32 @@ public class RGBSplitGlitchRenderFeature : ScriptableRendererFeature
     }
 
     public Settings settings = new Settings();
-
-    RGBSplitGlitchRenderPass m_RenderPass;
-
-
-
-
-
-    class RGBSplitGlitchRenderPass : ScriptableRenderPass
+    class ScanLineJitterGlitchRenderPass : ScriptableRenderPass
     {
-
         private Settings m_Settings;
         private Material m_Material;
-        public RGBSplitGlitchRenderPass(Settings settings)
+        public ScanLineJitterGlitchRenderPass(Settings settings)
         {
             m_Settings = settings;
         }
-
-        private float time = 0f;
-        private Vector4 glitchParams;
-
         public override void OnCameraSetup(CommandBuffer cmd, ref RenderingData renderingData)
         {
-
         }
 
-        // Here you can implement the rendering logic.
-        // Use <c>ScriptableRenderContext</c> to issue drawing commands or execute command buffers
-        // https://docs.unity3d.com/ScriptReference/Rendering.ScriptableRenderContext.html
-        // You don't have to call ScriptableRenderContext.submit, the render pipeline will call it at specific points in the pipeline.
+
         public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
         {
-            CommandBuffer cmd = CommandBufferPool.Get("RGBSplitGlitch");
-            m_Material = CoreUtils.CreateEngineMaterial(Shader.Find("Pineapple/Post-Processing/Glitch/RGBSplitGlitch"));
+            CommandBuffer cmd = CommandBufferPool.Get("LineBlockGlitch");
+            m_Material = CoreUtils.CreateEngineMaterial(Shader.Find("Pineapple/Post-Processing/Glitch/ScanLineJitterGlitch"));
 
             if (m_Material == null)
                 return;
 
             var source = renderingData.cameraData.renderer.cameraColorTarget;
 
-            UpdateParams();
+            m_Material.SetVector(param_id, new Vector4(m_Settings.intensity, m_Settings.speed, m_Settings.threshold,m_Settings.mulit));
 
-            m_Material.SetVector(param_id, glitchParams);
-
-            cmd.Blit(source,source, m_Material,0);
+            cmd.Blit(source, source, m_Material, 0);
 
             context.ExecuteCommandBuffer(cmd);
 
@@ -82,26 +65,18 @@ public class RGBSplitGlitchRenderFeature : ScriptableRendererFeature
 
         }
 
-        public void UpdateParams()
-        {
-            time += Time.deltaTime;
-            if (time > 100f)
-            {
-                time = 0f;
-            }
-            glitchParams = new Vector4(m_Settings.intensity, time * m_Settings.speed, UnityEngine.Random.Range(-1f, 1f), m_Settings.mulit);
-        }
-
         // Cleanup any allocated resources that were created during the execution of this render pass.
         public override void OnCameraCleanup(CommandBuffer cmd)
         {
         }
     }
 
+    ScanLineJitterGlitchRenderPass m_RenderPass;
+
     /// <inheritdoc/>
     public override void Create()
     {
-        m_RenderPass = new RGBSplitGlitchRenderPass(settings);
+        m_RenderPass = new ScanLineJitterGlitchRenderPass(settings);
 
         // Configures where the render pass should be injected.
         m_RenderPass.renderPassEvent = settings.configSettings.PassEvent;

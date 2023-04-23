@@ -1,5 +1,70 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8611861291734027720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e5e6ef92f29c0642a1f0b1d505ce420, type: 3}
+  m_Name: ScanLineJitterGlitch
+  m_EditorClassIdentifier: 
+  m_Active: 0
+  settings:
+    intensity: 0.421
+    speed: 1.1
+    threshold: 0
+    mulit: 0.172
+    configSettings:
+      PassEvent: 550
+      filterMode: 0
+--- !u!114 &-8083662789853775871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10c75907a29355945a32f7bc2b98baaf, type: 3}
+  m_Name: LineBlockGlitch
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  settings:
+    speed: 0.61
+    mulit: 1.26
+    lienWidth: 2.55
+    offset: 0.668
+    alpha: 1
+    frequency: 3.43
+    configSettings:
+      PassEvent: 550
+      filterMode: 1
+--- !u!114 &-4686465109965194297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cac0af1f44f9e684ea81dcfcb88ea0f0, type: 3}
+  m_Name: ImageBlockGlittch
+  m_EditorClassIdentifier: 
+  m_Active: 0
+  settings:
+    intensity: 0.47
+    speed: 8.9
+    mulit: 4.1
+    blockSize: 12
+    configSettings:
+      PassEvent: 550
+      filterMode: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17,7 +82,11 @@ MonoBehaviour:
   m_RendererFeatures:
   - {fileID: 8198383772697070090}
   - {fileID: 7693856242790096819}
-  m_RendererFeatureMap: 0a8aefb79a82c671b3df6c307d11c66a
+  - {fileID: -4686465109965194297}
+  - {fileID: 5624081886403018229}
+  - {fileID: -8083662789853775871}
+  - {fileID: -8611861291734027720}
+  m_RendererFeatureMap: 0a8aefb79a82c671b3df6c307d11c66ac73b43fccf54f6bef5bdc292adc00c4e01f8b88e850fd18f38b24163c8857c88
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
@@ -55,6 +124,34 @@ MonoBehaviour:
   m_ClusteredRendering: 0
   m_TileSize: 32
   m_IntermediateTextureMode: 1
+--- !u!114 &5624081886403018229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c17183ab5afa84186e0d7a8f92e9de, type: 3}
+  m_Name: ImageBlockGlitchDouble
+  m_EditorClassIdentifier: 
+  m_Active: 0
+  settings:
+    glitchIntensity: 0.45
+    speed: 9.3
+    mulit: 3.8
+    blockLayer_1:
+      blockSize_X: 3.6
+      blockSize_Y: 12
+      blockIntensity: 7.3
+    blockLayer_2:
+      blockSize_X: 10.5
+      blockSize_Y: 5
+      blockIntensity: 4.9
+    configSettings:
+      PassEvent: 550
+      filterMode: 1
 --- !u!114 &7693856242790096819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,9 +166,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Active: 0
   settings:
-    intensity: 0
+    intensity: 0.15
+    speed: 1.2
+    mulit: 2.7
     configSettings:
-      PassEvent: 600
+      PassEvent: 550
       filterMode: 0
 --- !u!114 &8198383772697070090
 MonoBehaviour:
@@ -85,8 +184,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a507abcb9ee3fb24ba38b27abca8717c, type: 3}
   m_Name: BlurRenderFeature
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   settings:
     PassEvent: 600
-    blurType: 4
+    blurType: 0
     filterMode: 1
