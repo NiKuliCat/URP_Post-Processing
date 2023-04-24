@@ -15,13 +15,8 @@ MonoBehaviour:
   m_Active: 1
   settings:
     material: {fileID: 2100000, guid: 6f58bf042ca3b2749b8ee02bd26bb410, type: 2}
-    intensity: 1
-    noiseIntensity: 0.631
-    center: {x: 0.5, y: 0.5}
-    radialTilling: 0
-    lengthTilling: 21.5
     configSettings:
-      PassEvent: 550
+      PassEvent: 500
       filterMode: 1
 --- !u!114 &-8611861291734027720
 MonoBehaviour:
@@ -35,15 +30,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e5e6ef92f29c0642a1f0b1d505ce420, type: 3}
   m_Name: ScanLineJitterGlitch
   m_EditorClassIdentifier: 
-  m_Active: 0
+  m_Active: 1
   settings:
-    intensity: 0.421
-    speed: 1.1
-    threshold: 0
-    mulit: 0.172
-    configSettings:
-      PassEvent: 550
-      filterMode: 0
+    PassEvent: 550
+    filterMode: 0
 --- !u!114 &-8083662789853775871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56,17 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10c75907a29355945a32f7bc2b98baaf, type: 3}
   m_Name: LineBlockGlitch
   m_EditorClassIdentifier: 
-  m_Active: 0
+  m_Active: 1
   settings:
-    speed: 0.61
-    mulit: 1.26
-    lienWidth: 2.55
-    offset: 0.668
-    alpha: 1
-    frequency: 3.43
-    configSettings:
-      PassEvent: 550
-      filterMode: 1
+    PassEvent: 550
+    filterMode: 0
 --- !u!114 &-4686465109965194297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,15 +62,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cac0af1f44f9e684ea81dcfcb88ea0f0, type: 3}
   m_Name: ImageBlockGlittch
   m_EditorClassIdentifier: 
-  m_Active: 0
+  m_Active: 1
   settings:
-    intensity: 0.47
-    speed: 8.9
-    mulit: 4.1
-    blockSize: 12
-    configSettings:
-      PassEvent: 550
-      filterMode: 1
+    PassEvent: 550
+    filterMode: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,22 +138,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19c17183ab5afa84186e0d7a8f92e9de, type: 3}
   m_Name: ImageBlockGlitchDouble
   m_EditorClassIdentifier: 
-  m_Active: 0
+  m_Active: 1
   settings:
-    glitchIntensity: 0.45
-    speed: 9.3
-    mulit: 3.8
-    blockLayer_1:
-      blockSize_X: 3.6
-      blockSize_Y: 12
-      blockIntensity: 7.3
-    blockLayer_2:
-      blockSize_X: 10.5
-      blockSize_Y: 5
-      blockIntensity: 4.9
-    configSettings:
-      PassEvent: 550
-      filterMode: 1
+    PassEvent: 550
+    filterMode: 0
 --- !u!114 &7693856242790096819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,14 +154,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8176be35009d6b343b59c44ecbe5eced, type: 3}
   m_Name: RGBSplitGlitchRenderFeature
   m_EditorClassIdentifier: 
-  m_Active: 0
+  m_Active: 1
   settings:
-    intensity: 0.15
-    speed: 1.2
-    mulit: 2.7
-    configSettings:
-      PassEvent: 550
-      filterMode: 0
+    PassEvent: 550
+    filterMode: 1
 --- !u!114 &8198383772697070090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +172,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Active: 1
   settings:
-    PassEvent: 600
-    blurType: 3
+    PassEvent: 500
+    blurType: 6
     filterMode: 1

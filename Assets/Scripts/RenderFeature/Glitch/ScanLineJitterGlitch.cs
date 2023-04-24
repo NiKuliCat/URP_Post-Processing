@@ -5,20 +5,7 @@ using UnityEngine.Rendering.Universal;
 
 public class ScanLineJitterGlitch : ScriptableRendererFeature
 {
-    [Serializable]
-    public class Settings
-    {
-        [Range(0f, 1f)]
-        public float intensity;
-        [Range(0f, 3f)]
-        public float speed;
-        [Range(0f, 2f)]
-        public float threshold;
-        [Range(0f, 1f)]
-        public float mulit;
-
-        public ConfigSettings configSettings;
-    }
+    
 
     static int param_id = Shader.PropertyToID("_GlitchParams");
 
@@ -29,14 +16,15 @@ public class ScanLineJitterGlitch : ScriptableRendererFeature
         public FilterMode filterMode;
     }
 
-    public Settings settings = new Settings();
+    public ConfigSettings settings = new ConfigSettings();
     class ScanLineJitterGlitchRenderPass : ScriptableRenderPass
     {
-        private Settings m_Settings;
         private Material m_Material;
-        public ScanLineJitterGlitchRenderPass(Settings settings)
+        private ScanLineJitterGlitchVolume volume;
+        public ScanLineJitterGlitchRenderPass()
         {
-            m_Settings = settings;
+            var stack = VolumeManager.instance.stack;
+            volume = stack.GetComponent<ScanLineJitterGlitchVolume>();
         }
         public override void OnCameraSetup(CommandBuffer cmd, ref RenderingData renderingData)
         {
@@ -45,6 +33,10 @@ public class ScanLineJitterGlitch : ScriptableRendererFeature
 
         public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
         {
+            if (!volume.IsActive())
+                return;
+
+
             CommandBuffer cmd = CommandBufferPool.Get("ScanLineJitterGlitch");
             m_Material = CoreUtils.CreateEngineMaterial(Shader.Find("Pineapple/Post-Processing/Glitch/ScanLineJitterGlitch"));
 
@@ -53,7 +45,7 @@ public class ScanLineJitterGlitch : ScriptableRendererFeature
 
             var source = renderingData.cameraData.renderer.cameraColorTarget;
 
-            m_Material.SetVector(param_id, new Vector4(m_Settings.intensity, m_Settings.speed, m_Settings.threshold,m_Settings.mulit));
+            m_Material.SetVector(param_id, new Vector4(volume.Intensity.value, volume.Wave.value, volume.Threshold.value,volume.Multi.value));
 
             cmd.Blit(source, source, m_Material, 0);
 
@@ -76,10 +68,10 @@ public class ScanLineJitterGlitch : ScriptableRendererFeature
     /// <inheritdoc/>
     public override void Create()
     {
-        m_RenderPass = new ScanLineJitterGlitchRenderPass(settings);
+        m_RenderPass = new ScanLineJitterGlitchRenderPass();
 
         // Configures where the render pass should be injected.
-        m_RenderPass.renderPassEvent = settings.configSettings.PassEvent;
+        m_RenderPass.renderPassEvent = settings.PassEvent;
     }
 
     // Here you can inject one or multiple render passes in the renderer.

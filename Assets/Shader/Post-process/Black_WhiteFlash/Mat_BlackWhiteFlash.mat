@@ -25,18 +25,18 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NoiseTex1:
-        m_Texture: {fileID: 2800000, guid: 7ae188fe74654c84c9e82b9d7e702e58, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2d09213a3f47822478d42191b78b44f4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NoiseTex2:
-        m_Texture: {fileID: 2800000, guid: 2d09213a3f47822478d42191b78b44f4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8d0347901107d66468bad4697379ec6f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Smooth: 0
+    - _Smooth: 0.0047
     - _Threshold: 0.3
     m_Colors:
-    - _FlashColor_1: {r: 0, g: 0, b: 0, a: 1}
-    - _FlashColor_2: {r: 1, g: 1, b: 1, a: 0}
+    - _FlashColor_1: {r: 0.049884304, g: 0.10735235, b: 0.1792453, a: 1}
+    - _FlashColor_2: {r: 2.8707733, g: 0.85261047, b: 0.45090684, a: 1}
   m_BuildTextureStacks: []

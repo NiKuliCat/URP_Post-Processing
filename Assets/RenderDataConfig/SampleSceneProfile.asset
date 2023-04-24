@@ -1,5 +1,79 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8830537998151852632
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8203f15fbe73eb147ad070dd418a2ac6, type: 3}
+  m_Name: ImageBlockGlitchVolume
+  m_EditorClassIdentifier: 
+  active: 0
+  Enable:
+    m_OverrideState: 1
+    m_Value: 1
+  Intensity:
+    m_OverrideState: 1
+    m_Value: 0.494
+  BlockSize:
+    m_OverrideState: 1
+    m_Value: 10.5
+  Wave:
+    m_OverrideState: 1
+    m_Value: 5.42
+  Multi:
+    m_OverrideState: 0
+    m_Value: 3.5
+--- !u!114 &-8412807283319378623
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a9488286461c5c44bea47d75868c9a4, type: 3}
+  m_Name: Black_WhiteFlashVolume
+  m_EditorClassIdentifier: 
+  active: 1
+  Enable:
+    m_OverrideState: 1
+    m_Value: 1
+  Intensity:
+    m_OverrideState: 1
+    m_Value: 1
+  NoiseIntensity:
+    m_OverrideState: 1
+    m_Value: 0.553
+  BlackTintColor:
+    m_OverrideState: 1
+    m_Value: {r: 0.049884304, g: 0.10735235, b: 0.1792453, a: 1}
+  WhiteTintColor:
+    m_OverrideState: 1
+    m_Value: {r: 2.8707733, g: 0.85261047, b: 0.45090684, a: 1}
+  Center_X_SS:
+    m_OverrideState: 1
+    m_Value: 0.208
+  Center_Y_SS:
+    m_OverrideState: 1
+    m_Value: 0.538
+  NoiseWave_U:
+    m_OverrideState: 1
+    m_Value: 0.039
+  NoiseWave_V:
+    m_OverrideState: 1
+    m_Value: 0.455
+  RadialTilling:
+    m_OverrideState: 1
+    m_Value: 0
+  LengthTilling:
+    m_OverrideState: 1
+    m_Value: 15.6
 --- !u!114 &-7893295128165547882
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -18,28 +92,28 @@ MonoBehaviour:
     m_Value: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 1.41
   scatter:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.7
   clamp:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 65472
   tint:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
   highQualityFiltering:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
   skipIterations:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   dirtTexture:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: {fileID: 0}
     dimension: 1
   dirtIntensity:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
 --- !u!114 &-7011558710299706105
 MonoBehaviour:
@@ -69,6 +143,34 @@ MonoBehaviour:
   rounded:
     m_OverrideState: 0
     m_Value: 0
+--- !u!114 &-1540423680887862142
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a576b927a0d18a4ea2479bee01c18e3, type: 3}
+  m_Name: ScanLineJitterGlitchVolume
+  m_EditorClassIdentifier: 
+  active: 1
+  Enable:
+    m_OverrideState: 1
+    m_Value: 1
+  Intensity:
+    m_OverrideState: 1
+    m_Value: 0.267
+  Threshold:
+    m_OverrideState: 1
+    m_Value: 0.175
+  Wave:
+    m_OverrideState: 1
+    m_Value: 1.03
+  Multi:
+    m_OverrideState: 1
+    m_Value: 0.007
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,9 +185,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   components:
   - {fileID: 849379129802519247}
-  - {fileID: -7893295128165547882}
   - {fileID: -7011558710299706105}
-  - {fileID: 2714159161273388838}
+  - {fileID: -7893295128165547882}
+  - {fileID: 1056475837657766084}
+  - {fileID: 2499539885110551298}
+  - {fileID: -8830537998151852632}
+  - {fileID: 6574471458741069382}
+  - {fileID: 8354968340841237572}
+  - {fileID: -1540423680887862142}
+  - {fileID: -8412807283319378623}
 --- !u!114 &849379129802519247
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -102,6 +210,56 @@ MonoBehaviour:
   mode:
     m_OverrideState: 1
     m_Value: 2
+--- !u!114 &1056475837657766084
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89e6d97366365e541950b78450ccdd75, type: 3}
+  m_Name: BlurVolume
+  m_EditorClassIdentifier: 
+  active: 1
+  enable:
+    m_OverrideState: 1
+    m_Value: 1
+  BlurRadius:
+    m_OverrideState: 1
+    m_Value: 0.7
+  Iteration:
+    m_OverrideState: 1
+    m_Value: 5
+  DownSampler:
+    m_OverrideState: 1
+    m_Value: 1
+--- !u!114 &2499539885110551298
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8506b9f3a7d8e24f99a82b574687727, type: 3}
+  m_Name: RGBSplitGlitch
+  m_EditorClassIdentifier: 
+  active: 0
+  Enable:
+    m_OverrideState: 1
+    m_Value: 1
+  Intensity:
+    m_OverrideState: 1
+    m_Value: 0.315
+  Wave:
+    m_OverrideState: 1
+    m_Value: 1
+  Multi:
+    m_OverrideState: 0
+    m_Value: 3
 --- !u!114 &2714159161273388838
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -120,10 +278,134 @@ MonoBehaviour:
     m_Value: 1
   BlurRadius:
     m_OverrideState: 1
-    m_Value: 1.9
+    m_Value: 0.2
   Iteration:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 28
   DownSampler:
     m_OverrideState: 1
     m_Value: 1
+--- !u!114 &6574471458741069382
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dae47aefea6238f40b8f44654e96b524, type: 3}
+  m_Name: ImageBlockGlitch_DoubleVolume
+  m_EditorClassIdentifier: 
+  active: 0
+  Enable:
+    m_OverrideState: 1
+    m_Value: 1
+  Intensity:
+    m_OverrideState: 1
+    m_Value: 0.8
+  Wave:
+    m_OverrideState: 1
+    m_Value: 8
+  Multi:
+    m_OverrideState: 0
+    m_Value: 4
+  BlockLayer_1:
+    BlockSize_X:
+      m_OverrideState: 1
+      m_Value: 4
+    BlockSize_Y:
+      m_OverrideState: 1
+      m_Value: 11
+    BlockIntensity:
+      m_OverrideState: 1
+      m_Value: 5
+  BlockLayer_2:
+    BlockSize_X:
+      m_OverrideState: 1
+      m_Value: 12
+    BlockSize_Y:
+      m_OverrideState: 1
+      m_Value: 5
+    BlockIntensity:
+      m_OverrideState: 1
+      m_Value: 4
+--- !u!114 &8295978783914440282
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dae47aefea6238f40b8f44654e96b524, type: 3}
+  m_Name: ImageBlockGlitch_DoubleVolume
+  m_EditorClassIdentifier: 
+  active: 1
+  Enable:
+    m_OverrideState: 0
+    m_Value: 0
+  Intensity:
+    m_OverrideState: 0
+    m_Value: 1
+  Wave:
+    m_OverrideState: 0
+    m_Value: 8
+  Multi:
+    m_OverrideState: 0
+    m_Value: 4
+  BlockLayer_1:
+    BlockSize_X:
+      m_OverrideState: 0
+      m_Value: 0
+    BlockSize_Y:
+      m_OverrideState: 0
+      m_Value: 0
+    BlockIntensity:
+      m_OverrideState: 0
+      m_Value: 0
+  BlockLayer_2:
+    BlockSize_X:
+      m_OverrideState: 0
+      m_Value: 0
+    BlockSize_Y:
+      m_OverrideState: 0
+      m_Value: 0
+    BlockIntensity:
+      m_OverrideState: 0
+      m_Value: 0
+--- !u!114 &8354968340841237572
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f62fd85140a1f4d4894598cd36933b19, type: 3}
+  m_Name: LineBlockGlitchVolume
+  m_EditorClassIdentifier: 
+  active: 0
+  Enable:
+    m_OverrideState: 1
+    m_Value: 1
+  Wave:
+    m_OverrideState: 1
+    m_Value: 3.36
+  Multi:
+    m_OverrideState: 1
+    m_Value: 1.01
+  LineWidth:
+    m_OverrideState: 1
+    m_Value: 1.67
+  Offset:
+    m_OverrideState: 1
+    m_Value: 0.057
+  Alpha:
+    m_OverrideState: 1
+    m_Value: 1
+  Frequency:
+    m_OverrideState: 1
+    m_Value: 5.96

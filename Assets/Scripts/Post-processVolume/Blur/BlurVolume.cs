@@ -1,13 +1,10 @@
-using PineappleLearning;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
 [Serializable, VolumeComponentMenuForRenderPipeline("Pineapple/Blur", typeof(UniversalRenderPipeline))]
-public class Blur : VolumeComponent, IPostProcessComponent
+public class BlurVolume : VolumeComponent, IPostProcessComponent
 {
     public BoolParameter enable = new BoolParameter(false);
 

@@ -9,27 +9,14 @@ public class BlackWhiteFlash : ScriptableRendererFeature
     public class Settings
     {
         public Material material;
-        [Range(0f, 1f)]
-        public float intensity;
-        [Range(0f, 1f)]
-        public float noiseIntensity;
-        [Range(0f, 3f)]
-        public float noiseWave_U;
-        [Range(0f, 3f)]
-        public float noiseWave_V;
-        public Vector2 center;
-
-        [Range(0,50f)]
-        public float radialTilling;
-        [Range(0, 50f)]
-        public float lengthTilling;
-
-
         public ConfigSettings configSettings;
     }
 
     static int params2_id = Shader.PropertyToID("_Params2");
     static int params1_id = Shader.PropertyToID("_Params1");
+
+    static int Color1_id = Shader.PropertyToID("_FlashColor_1");
+    static int Color2_id = Shader.PropertyToID("_FlashColor_2");
 
     [Serializable]
     public class ConfigSettings
@@ -43,9 +30,14 @@ public class BlackWhiteFlash : ScriptableRendererFeature
     class BlackWhiteFlashRenderPass : ScriptableRenderPass
     {
         private Settings m_Settings;
+        private Black_WhiteFlashVolume volume;
+
         public BlackWhiteFlashRenderPass(Settings settings)
         {
             m_Settings = settings;
+
+            var stack = VolumeManager.instance.stack;
+            volume = stack.GetComponent<Black_WhiteFlashVolume>();
         }
         public override void OnCameraSetup(CommandBuffer cmd, ref RenderingData renderingData)
         {
@@ -54,6 +46,10 @@ public class BlackWhiteFlash : ScriptableRendererFeature
 
         public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
         {
+            if (!volume.IsActive())
+                return;
+
+
             CommandBuffer cmd = CommandBufferPool.Get("BlackWhiteFlash");
 
             if (m_Settings.material == null)
@@ -61,9 +57,10 @@ public class BlackWhiteFlash : ScriptableRendererFeature
 
             var source = renderingData.cameraData.renderer.cameraColorTarget;
 
-            m_Settings.material.SetVector(params2_id, new Vector4( m_Settings.intensity,m_Settings.noiseIntensity,m_Settings.noiseWave_U, m_Settings.noiseWave_V)); 
-            m_Settings.material.SetVector(params1_id, new Vector4(m_Settings.center.x, m_Settings.center.y,m_Settings.radialTilling,m_Settings.lengthTilling));
-
+            m_Settings.material.SetVector(params2_id, new Vector4( volume.Intensity.value, volume.Intensity.value * volume.NoiseIntensity.value,volume.NoiseWave_U.value, volume.NoiseWave_V.value)); 
+            m_Settings.material.SetVector(params1_id, new Vector4(volume.Center_X_SS.value, volume.Center_Y_SS.value,volume.RadialTilling.value,volume.LengthTilling.value));
+            m_Settings.material.SetColor(Color1_id, volume.BlackTintColor.value);
+            m_Settings.material.SetColor(Color2_id, volume.WhiteTintColor.value);
 
             cmd.Blit(source, source, m_Settings.material, 0);
 

@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -13,22 +14,9 @@ public class ImageBlockGlittch : ScriptableRendererFeature
         public FilterMode filterMode;
     }
 
-    [Serializable]
-    public class Settings
-    {
-        [Range(0f, 1f)]
-        public float intensity;
-        [Range(0f, 20f)]
-        public float speed;
-        [Range(0f, 10f)]
-        public float mulit;
-        [Range(0f, 20f)]
-        public float blockSize;
+    
 
-        public ConfigSettings configSettings;
-    }
-
-    public Settings settings = new Settings();
+    public ConfigSettings settings = new ConfigSettings();
 
     static int param_id = Shader.PropertyToID("_GlitchParams");
     static int blockSize_id = Shader.PropertyToID("_BlockSize");
@@ -37,11 +25,16 @@ public class ImageBlockGlittch : ScriptableRendererFeature
 
     class ImageBlockGlitchRenderPass : ScriptableRenderPass
     {
-        private Settings m_Settings;
+
         private Material m_Material;
-        public ImageBlockGlitchRenderPass(Settings settings)
+        private ImageBlockGlitchVolume volume;
+        public ImageBlockGlitchRenderPass()
         {
-            m_Settings = settings;
+
+
+            var stack = VolumeManager.instance.stack;
+            volume = stack.GetComponent<ImageBlockGlitchVolume>();
+
         }
         private Vector4 glitchParams;
         public override void OnCameraSetup(CommandBuffer cmd, ref RenderingData renderingData)
@@ -51,7 +44,11 @@ public class ImageBlockGlittch : ScriptableRendererFeature
 
         public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
         {
-            CommandBuffer cmd = CommandBufferPool.Get("RGBSplitGlitch");
+
+            if (!volume.IsActive())
+                return;
+
+            CommandBuffer cmd = CommandBufferPool.Get("ImageBlockGlitch");
             m_Material = CoreUtils.CreateEngineMaterial(Shader.Find("Pineapple/Post-Processing/Glitch/ImageBlockGlitch"));
 
             if (m_Material == null)
@@ -60,7 +57,7 @@ public class ImageBlockGlittch : ScriptableRendererFeature
             var source = renderingData.cameraData.renderer.cameraColorTarget;
             UpdateParams();
             m_Material.SetVector(param_id, glitchParams);
-            m_Material.SetFloat(blockSize_id, m_Settings.blockSize);
+            m_Material.SetFloat(blockSize_id, volume.BlockSize.value);
 
             cmd.Blit(source, source, m_Material, 0);
 
@@ -72,7 +69,7 @@ public class ImageBlockGlittch : ScriptableRendererFeature
         }
         public void UpdateParams()
         {
-            glitchParams = new Vector4(m_Settings.intensity, m_Settings.speed, UnityEngine.Random.Range(-1f, 1f), m_Settings.mulit);
+            glitchParams = new Vector4(volume.Intensity.value, volume.Wave.value, UnityEngine.Random.Range(-1f, 1f), volume.Multi.value);
         }
 
         // Cleanup any allocated resources that were created during the execution of this render pass.
@@ -85,10 +82,10 @@ public class ImageBlockGlittch : ScriptableRendererFeature
     /// <inheritdoc/>
     public override void Create()
     {
-        m_RenderPass = new ImageBlockGlitchRenderPass(settings);
+        m_RenderPass = new ImageBlockGlitchRenderPass();
 
         // Configures where the render pass should be injected.
-        m_RenderPass.renderPassEvent = settings.configSettings.PassEvent;
+        m_RenderPass.renderPassEvent = settings.PassEvent;
     }
 
     // Here you can inject one or multiple render passes in the renderer.

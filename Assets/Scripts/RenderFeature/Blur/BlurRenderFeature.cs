@@ -36,7 +36,7 @@ namespace PineappleLearning
 
             BlurType blurType;
             FilterMode filterMode;
-            Blur blurVolume;
+            BlurVolume blurVolume;
             #region DualKawase
 
             Level[] BlurLevels;
@@ -76,7 +76,7 @@ namespace PineappleLearning
             {
                 //获取volume组件
                 var stack = VolumeManager.instance.stack;
-                blurVolume = stack.GetComponent<Blur>();
+                blurVolume = stack.GetComponent<BlurVolume>();
              
                 blurType = settings.blurType;
                 filterMode = settings.filterMode;

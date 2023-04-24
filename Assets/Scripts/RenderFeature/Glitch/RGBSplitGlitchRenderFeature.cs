@@ -6,20 +6,6 @@ using UnityEngine.Rendering.Universal;
 public class RGBSplitGlitchRenderFeature : ScriptableRendererFeature
 {
 
-    [Serializable]
-    public class Settings
-    {
-        [Range(0f, 1f)]
-        public float intensity;
-        [Range(0f, 3f)]
-        public float speed;
-        [Range(0f, 10f)]
-        public float mulit;
-        public ConfigSettings configSettings;
-    }
-
-    //static int colorBuffer_id = Shader.PropertyToID("_ColorBuffer");
-    static int param_id = Shader.PropertyToID("_GlitchParams");
 
     [Serializable]
     public class ConfigSettings
@@ -28,7 +14,11 @@ public class RGBSplitGlitchRenderFeature : ScriptableRendererFeature
         public FilterMode filterMode;
     }
 
-    public Settings settings = new Settings();
+
+    static int param_id = Shader.PropertyToID("_GlitchParams");
+
+
+    public ConfigSettings settings = new ConfigSettings();
 
     RGBSplitGlitchRenderPass m_RenderPass;
 
@@ -39,11 +29,17 @@ public class RGBSplitGlitchRenderFeature : ScriptableRendererFeature
     class RGBSplitGlitchRenderPass : ScriptableRenderPass
     {
 
-        private Settings m_Settings;
+
         private Material m_Material;
-        public RGBSplitGlitchRenderPass(Settings settings)
+
+        private RGBSplitGlitchVolume volume;
+
+        public RGBSplitGlitchRenderPass()
         {
-            m_Settings = settings;
+
+
+            var stack = VolumeManager.instance.stack;
+            volume = stack.GetComponent<RGBSplitGlitchVolume>();
         }
 
         private float time = 0f;
@@ -54,12 +50,12 @@ public class RGBSplitGlitchRenderFeature : ScriptableRendererFeature
 
         }
 
-        // Here you can implement the rendering logic.
-        // Use <c>ScriptableRenderContext</c> to issue drawing commands or execute command buffers
-        // https://docs.unity3d.com/ScriptReference/Rendering.ScriptableRenderContext.html
-        // You don't have to call ScriptableRenderContext.submit, the render pipeline will call it at specific points in the pipeline.
         public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
         {
+            if (!volume.IsActive())
+                return;
+
+
             CommandBuffer cmd = CommandBufferPool.Get("RGBSplitGlitch");
             m_Material = CoreUtils.CreateEngineMaterial(Shader.Find("Pineapple/Post-Processing/Glitch/RGBSplitGlitch"));
 
@@ -89,7 +85,7 @@ public class RGBSplitGlitchRenderFeature : ScriptableRendererFeature
             {
                 time = 0f;
             }
-            glitchParams = new Vector4(m_Settings.intensity, time * m_Settings.speed, UnityEngine.Random.Range(-1f, 1f), m_Settings.mulit);
+            glitchParams = new Vector4(volume.Intensity.value, time * volume.Wave.value, UnityEngine.Random.Range(-1f, 1f), volume.Multi.value);
         }
 
         // Cleanup any allocated resources that were created during the execution of this render pass.
@@ -101,10 +97,10 @@ public class RGBSplitGlitchRenderFeature : ScriptableRendererFeature
     /// <inheritdoc/>
     public override void Create()
     {
-        m_RenderPass = new RGBSplitGlitchRenderPass(settings);
+        m_RenderPass = new RGBSplitGlitchRenderPass();
 
         // Configures where the render pass should be injected.
-        m_RenderPass.renderPassEvent = settings.configSettings.PassEvent;
+        m_RenderPass.renderPassEvent = settings.PassEvent;
     }
 
     // Here you can inject one or multiple render passes in the renderer.
