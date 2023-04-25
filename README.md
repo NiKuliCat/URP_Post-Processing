@@ -35,6 +35,6 @@ Extend the Unity URP post-processing system
 ![](https://github.com/NiKuliCat/Accessory_Blog/blob/fc5ecacfe669ab9c50be62db1417b730e816207e/URP_Post-Processing/GriaryBlur.png)
 ![](https://github.com/NiKuliCat/Accessory_Blog/blob/9d184943998e33a40e3a558b1f93fac69c30c4ad/URP_Post-Processing/ImageBlockGlitch.png)
 ![](https://github.com/NiKuliCat/Accessory_Blog/blob/9d184943998e33a40e3a558b1f93fac69c30c4ad/URP_Post-Processing/flash.png)
-
+![](https://github.com/NiKuliCat/Accessory_Blog/blob/66cd001f45606e0c2d73a4371ae18ac944a31565/URP_Post-Processing/edit.png)
 
 
