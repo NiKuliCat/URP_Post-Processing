@@ -2,10 +2,10 @@
 Extend the Unity URP post-processing system
 
 ---
-´Ë²Ö¿â°üº¬Ò»Ğ©±¾ÈËÑ§Ï°Unity URP ÆÁÄ»ºó´¦ÀíµÄ¹ı³ÌÖĞËùÊµÏÖµÄĞ§¹û<br>
-µ±È»£¬Ò»Ğ©ºó´¦ÀíĞ§¹ûµÄËã·¨½è¼øÓÚ[Ç³Ä«-X-PostProcessing-Library](https://github.com/QianMo/X-PostProcessing-Library),Ê®·Ö¸ĞĞ»!<br>
+æ­¤ä»“åº“åŒ…å«ä¸€äº›æœ¬äººå­¦ä¹ Unity URP å±å¹•åå¤„ç†çš„è¿‡ç¨‹ä¸­æ‰€å®ç°çš„æ•ˆæœ<br>
+å½“ç„¶ï¼Œä¸€äº›åå¤„ç†æ•ˆæœçš„ç®—æ³•å€Ÿé‰´äº[æµ…å¢¨-X-PostProcessing-Library](https://github.com/QianMo/X-PostProcessing-Library),ååˆ†æ„Ÿè°¢!<br>
 
-### Ä¿Ç°ÊµÏÖµÄºó´¦ÀíĞ§¹û°üÀ¨ :
+### åŒ…æ‹¬ :
 + Blur
 	+ [Gaussian Blur](https://github.com/NiKuliCat/URP_Post-Processing/blob/4f4023e698ac9cad10eae3f51ae933cedebdb908/Assets/Shader/Post-process/Blur/GaussianBlur.shader)
 	+ [Box Blur](https://github.com/NiKuliCat/URP_Post-Processing/blob/0f0d46f4e9809324e54103c5fbf10644ad4ba695/Assets/Shader/Post-process/Blur/BoxBlur.shader)
