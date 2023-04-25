@@ -49,25 +49,25 @@ MonoBehaviour:
     m_Value: 1
   NoiseIntensity:
     m_OverrideState: 1
-    m_Value: 0.553
+    m_Value: 0.43
   BlackTintColor:
     m_OverrideState: 1
-    m_Value: {r: 0.049884304, g: 0.10735235, b: 0.1792453, a: 1}
+    m_Value: {r: 0.052287295, g: 0.08634346, b: 0.23584908, a: 1}
   WhiteTintColor:
     m_OverrideState: 1
-    m_Value: {r: 2.8707733, g: 0.85261047, b: 0.45090684, a: 1}
+    m_Value: {r: 2.8707733, g: 0.8237119, b: 0.46593693, a: 1}
   Center_X_SS:
     m_OverrideState: 1
-    m_Value: 0.208
+    m_Value: 0.203
   Center_Y_SS:
     m_OverrideState: 1
-    m_Value: 0.538
+    m_Value: 0.517
   NoiseWave_U:
     m_OverrideState: 1
     m_Value: 0.039
   NoiseWave_V:
     m_OverrideState: 1
-    m_Value: 0.455
+    m_Value: 0.398
   RadialTilling:
     m_OverrideState: 1
     m_Value: 0
@@ -92,7 +92,7 @@ MonoBehaviour:
     m_Value: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 1.41
+    m_Value: 1.5
   scatter:
     m_OverrideState: 1
     m_Value: 0.7
@@ -161,13 +161,13 @@ MonoBehaviour:
     m_Value: 1
   Intensity:
     m_OverrideState: 1
-    m_Value: 0.267
+    m_Value: 0.316
   Threshold:
     m_OverrideState: 1
     m_Value: 0.175
   Wave:
     m_OverrideState: 1
-    m_Value: 1.03
+    m_Value: 2.02
   Multi:
     m_OverrideState: 1
     m_Value: 0.007
@@ -228,10 +228,10 @@ MonoBehaviour:
     m_Value: 1
   BlurRadius:
     m_OverrideState: 1
-    m_Value: 0.7
+    m_Value: 0.3
   Iteration:
     m_OverrideState: 1
-    m_Value: 5
+    m_Value: 13
   DownSampler:
     m_OverrideState: 1
     m_Value: 1
@@ -247,13 +247,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8506b9f3a7d8e24f99a82b574687727, type: 3}
   m_Name: RGBSplitGlitch
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   Enable:
     m_OverrideState: 1
     m_Value: 1
   Intensity:
     m_OverrideState: 1
-    m_Value: 0.315
+    m_Value: 0.062
   Wave:
     m_OverrideState: 1
     m_Value: 1
@@ -297,7 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dae47aefea6238f40b8f44654e96b524, type: 3}
   m_Name: ImageBlockGlitch_DoubleVolume
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   Enable:
     m_OverrideState: 1
     m_Value: 1

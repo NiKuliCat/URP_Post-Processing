@@ -37,6 +37,6 @@ Material:
     - _Smooth: 0.0047
     - _Threshold: 0.3
     m_Colors:
-    - _FlashColor_1: {r: 0.049884304, g: 0.10735235, b: 0.1792453, a: 1}
-    - _FlashColor_2: {r: 2.8707733, g: 0.85261047, b: 0.45090684, a: 1}
+    - _FlashColor_1: {r: 0.052287295, g: 0.08634346, b: 0.23584908, a: 1}
+    - _FlashColor_2: {r: 0.19105273, g: 2.660945, b: 2.9896529, a: 1}
   m_BuildTextureStacks: []
